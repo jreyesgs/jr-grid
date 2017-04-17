@@ -1,8 +1,10 @@
 
+$gridColums: 12;
+$widthColum: 100 / $gridColums;
+
 .row{
   width: 100%;
 }
-$gridColums: 12;
 
 .row::before, .row::after{
   content: " ";
@@ -10,15 +12,11 @@ $gridColums: 12;
   clear: both;
 }
 
-$widthColum: 100 / $gridColums;
-
 [class^="col-"]{
   display: block;
   float: left;
   padding-left: 10px;
   padding-right: 10px;
-  border: 1px solid #000;
-  height: 100px;
 }
 
 @for $i from 1 through $gridColums {
