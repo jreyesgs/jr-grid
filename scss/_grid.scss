@@ -17,6 +17,10 @@ $widthColum: 100 / $gridColums;
   float: left;
   padding-left: 10px;
   padding-right: 10px;
+  // Debug mode
+  border: 1px solid #000;
+  height: 100px;
+  margin-bottom: 20px;
 }
 
 @for $i from 1 through $gridColums {
@@ -42,5 +46,47 @@ $widthColum: 100 / $gridColums;
   }
   @for $i from 1 through 10 {
     .col-lg-x#{$i*10} { width: $i * 10%; }
+  }
+}
+
+/* FLEX GRID */
+
+.row-flex{
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-right: -.5rem;
+    margin-left: -.5rem;
+    // Debug mode
+    height: 100px;
+    margin-bottom: 20px;
+    @for $i from 1 through $gridColums {
+      & > .col-sm-#{$i} {
+        flex-basis: $widthColum * $i * 1%;
+        max-width: $widthColum * $i * 1%;
+      }
+    }
+}
+
+@media print, screen and (min-width: 40em){
+  .row-flex{
+    @for $i from 1 through $gridColums {
+      & > .col-md-#{$i} {
+        flex-basis: $widthColum * $i * 1%;
+        max-width: $widthColum * $i * 1%;
+      }
+    }
+  }
+}
+
+@media print, screen and (min-width: 64em){
+  .row-flex{
+    @for $i from 1 through $gridColums {
+      & > .col-lg-#{$i} {
+        flex-basis: $widthColum * $i * 1%;
+        max-width: $widthColum * $i * 1%;
+      }
+    }
   }
 }
